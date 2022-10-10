@@ -17,7 +17,7 @@ class UsersTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.profileImage.withRoundedAndBorder()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

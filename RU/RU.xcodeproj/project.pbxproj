@@ -69,7 +69,7 @@
 				0AF8C6E328F4B7FF008EBD91 /* Model */,
 				0AF8C6EA28F4E008008EBD91 /* View */,
 				0AF8C6E928F4DFF4008EBD91 /* Controller */,
-				0AF8C6E628F4BB3A008EBD91 /* Networking */,
+				0AF8C6E628F4BB3A008EBD91 /* Helper */,
 				0AF8C6C428F46BC1008EBD91 /* AppDelegate.swift */,
 				0AF8C6C628F46BC1008EBD91 /* SceneDelegate.swift */,
 				0AF8C6CA28F46BC1008EBD91 /* Main.storyboard */,
@@ -89,12 +89,12 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		0AF8C6E628F4BB3A008EBD91 /* Networking */ = {
+		0AF8C6E628F4BB3A008EBD91 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
 				0AF8C6E728F4BB73008EBD91 /* Networking.swift */,
 			);
-			path = Networking;
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		0AF8C6E928F4DFF4008EBD91 /* Controller */ = {

@@ -58,6 +58,7 @@ extension UsersViewController : UITableViewDelegate,UITableViewDataSource {
         let instance = usersData[indexPath.row]
         cell.nameLabel.text = "\(instance.name.first) \(instance.name.last)"
         cell.emailLabel.text = "\(instance.email)"
+        cell.profileImage.loadImageUsingCache(withUrl: instance.picture.thumbnail)
         return cell
     }
 
