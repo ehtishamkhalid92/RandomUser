@@ -8,15 +8,15 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Users View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RU" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UsersViewController" id="BYZ-38-t0r" customClass="UsersViewController" customModule="RU" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VpZ-HU-qFz">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Users" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VpZ-HU-qFz">
                                 <rect key="frame" x="15" y="47" width="360" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="1ft-r1-TZB"/>
@@ -29,7 +29,7 @@
                                 <rect key="frame" x="0.0" y="97" width="390" height="713"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="90" id="IeA-sh-Bv7">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="90" id="IeA-sh-Bv7" customClass="UsersTableViewCell" customModule="RU" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="390" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IeA-sh-Bv7" id="gdZ-zh-uzf">
@@ -82,6 +82,12 @@
                                                 <constraint firstAttribute="trailing" secondItem="R3T-Rv-OVP" secondAttribute="trailing" constant="5" id="pPe-dN-oe4"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="emailLabel" destination="H8U-QT-tt7" id="O9A-qA-UA6"/>
+                                            <outlet property="nameLabel" destination="ZVJ-rq-cCW" id="hzR-Re-62l"/>
+                                            <outlet property="profileImage" destination="PCY-nL-3Iu" id="eBN-ia-7ph"/>
+                                            <outlet property="shadowView" destination="R3T-Rv-OVP" id="mDI-bC-wlx"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -98,15 +104,18 @@
                             <constraint firstItem="VpZ-HU-qFz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="qhW-or-Xub"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="Ev5-0w-3Wl" id="3tG-4o-xa5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="92" y="-59"/>
+            <point key="canvasLocation" x="-245" y="-53"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="8JR-0Y-G9K">
             <objects>
-                <viewController id="Yff-G1-bpa" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="Yff-G1-bpa" customClass="DetailViewController" customModule="RU" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dZb-N8-7It">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -203,10 +212,18 @@
                             <constraint firstItem="kmP-3h-yka" firstAttribute="top" secondItem="vTO-f0-UCo" secondAttribute="top" id="xaN-Wl-OlB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addressLbl" destination="2RL-Nk-m7g" id="Uew-xn-gLP"/>
+                        <outlet property="ageLbl" destination="hss-it-FTP" id="RiY-Xk-wiI"/>
+                        <outlet property="emailLbl" destination="eZY-hq-wnc" id="Mcw-EK-KE1"/>
+                        <outlet property="imageView" destination="KlT-t3-nRy" id="OAM-Ay-jLv"/>
+                        <outlet property="nameLbl" destination="pAI-P4-3Z2" id="fe6-zh-v9W"/>
+                        <outlet property="phoneLbl" destination="91B-h1-iCH" id="LWb-HA-vmR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yqp-4L-Iwr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="944.61538461538453" y="-59.004739336492889"/>
+            <point key="canvasLocation" x="598" y="-53"/>
         </scene>
     </scenes>
     <resources>
