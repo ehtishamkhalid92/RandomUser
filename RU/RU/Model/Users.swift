@@ -10,6 +10,14 @@ import Foundation
 // MARK: - Users
 struct Users: Codable {
     let results: [Result]
+    let info: Info
+}
+
+// MARK: - Info
+struct Info: Codable {
+    let seed: String
+    let results, page: Int
+    let version: String
 }
 
 // MARK: - Result
