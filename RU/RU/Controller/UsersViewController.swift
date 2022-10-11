@@ -16,7 +16,7 @@ class UsersViewController: UIViewController {
     //MARK: View Life Cycle.
     override func viewDidLoad() {
         super.viewDidLoad()
-        getDataFromUsers()
+        getDataFromUsers(numberOfItem: 20)
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -24,23 +24,29 @@ class UsersViewController: UIViewController {
     
     //MARK: Actions
     @IBAction func updateUserButtonPressed(_ sender: UIButton) {
-        self.usersData.removeAll()
-        getDataFromUsers()
+        if self.usersData.count > 20 {
+            Toast.show(message: "Stack is full please delete one", controller: self)
+        }else {
+            getDataFromUsers(numberOfItem: 20)
+        }
+        
     }
     
     //MARK: Functions
-    private func getDataFromUsers() {
-        let url = URL(string: "https://randomuser.me/api/?page=3&results=10&seed=abc")!
+    private func getDataFromUsers(numberOfItem: Int) {
+        let url = URL(string: "https://randomuser.me/api/?results=\(numberOfItem)")!
         URLSession.shared.fetchData(at: url) { response in
             DispatchQueue.main.async {
                 switch response {
                 case .success(let data):
                     print("Users found successfully")
-                    self.usersData = data.results
-                    print(self.usersData)
+                    for items in data.results {
+                        self.usersData.append(items)
+                    }
                     self.tableView.reloadData()
                 case .failure(let error):
                     print(error.localizedDescription)
+                    Toast.show(message: "\(error.localizedDescription)", controller: self)
                 }
             }
         }
@@ -64,5 +70,13 @@ extension UsersViewController : UITableViewDelegate,UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(identifier: "DetailViewController") as! DetailViewController
+        let instance = usersData[indexPath.row]
+        vc.user = instance
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
 }
