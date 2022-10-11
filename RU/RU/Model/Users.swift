@@ -1,9 +1,4 @@
-//
-//  Users.swift
-//  RU
-//
-//  Created by Ehtisham Khalid on 10.10.22.
-//
+
 
 import Foundation
 
@@ -22,7 +17,7 @@ struct Info: Codable {
 
 // MARK: - Result
 struct Result: Codable {
-    let gender: String
+    let gender: Gender
     let name: Name
     let location: Location
     let email: String
@@ -40,6 +35,11 @@ struct Dob: Codable {
     let age: Int
 }
 
+enum Gender: String, Codable {
+    case female = "female"
+    case male = "male"
+}
+
 // MARK: - ID
 struct ID: Codable {
     let name: String
@@ -50,7 +50,7 @@ struct ID: Codable {
 struct Location: Codable {
     let street: Street
     let city, state, country: String
-    let postcode: Int
+    let postcode: Postcode
     let coordinates: Coordinates
     let timezone: Timezone
 }
@@ -58,6 +58,34 @@ struct Location: Codable {
 // MARK: - Coordinates
 struct Coordinates: Codable {
     let latitude, longitude: String
+}
+
+enum Postcode: Codable {
+    case integer(Int)
+    case string(String)
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let x = try? container.decode(Int.self) {
+            self = .integer(x)
+            return
+        }
+        if let x = try? container.decode(String.self) {
+            self = .string(x)
+            return
+        }
+        throw DecodingError.typeMismatch(Postcode.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for Postcode"))
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .integer(let x):
+            try container.encode(x)
+        case .string(let x):
+            try container.encode(x)
+        }
+    }
 }
 
 // MARK: - Street
@@ -91,3 +119,4 @@ struct Name: Codable {
 struct Picture: Codable {
     let large, medium, thumbnail: String
 }
+
