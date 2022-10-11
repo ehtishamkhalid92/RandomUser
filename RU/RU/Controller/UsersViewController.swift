@@ -24,7 +24,8 @@ class UsersViewController: UIViewController {
     
     //MARK: Actions
     @IBAction func updateUserButtonPressed(_ sender: UIButton) {
-        if self.usersData.count > 20 {
+        print("Stack count", self.usersData.count)
+        if self.usersData.count == 20 {
             Toast.show(message: "Stack is full please delete one", controller: self)
         }else {
             getDataFromUsers(numberOfItem: 20)
