@@ -91,7 +91,6 @@ class UsersViewController: UIViewController {
                 switch response {
                 case .success:
                     self.getDataFromApi(url: self.sourceUrl)
-                    self.tableView.reloadData()
                 case .failure(let error):
                     Toast.show(message: error.localizedDescription, controller: self)
                 }
