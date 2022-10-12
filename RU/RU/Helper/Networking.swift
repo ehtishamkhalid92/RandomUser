@@ -10,6 +10,7 @@ import UIKit
 
 extension URLSession {
     
+    /// This function send network request and get Json response
     func fetchData(at url: URL, completion: @escaping (Swift.Result<Users, Error>) -> Void) {
         self.dataTask(with: url) { data, response, error in
             if data != nil && error == nil {
@@ -21,10 +22,12 @@ extension URLSession {
                 }
             }
         }.resume()
-        
     }
 }
 
+
+/// Below function is used to download the image from Url and save in the cache memory
+/// This function also return image as UIImage
 let imageCache = NSCache<NSString, UIImage>()
 extension UIImageView {
     func loadImageUsingCache(withUrl urlString : String) {
@@ -61,6 +64,7 @@ extension UIImageView {
         }).resume()
     }
     
+    //Function used for round the image view
     func withRoundedAndBorder() {
         self.layer.cornerRadius = self.frame.size.width / 2
         self.clipsToBounds = true

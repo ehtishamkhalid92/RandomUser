@@ -32,7 +32,7 @@ class DetailViewController: UIViewController {
         self.emailLbl.text = user?.email
         self.nameLbl.text = "\(user?.name.first ?? "") \(user?.name.last ?? "")"
         self.phoneLbl.text = user?.phone
-        let address = "\(user?.location.street.name ?? "") \(user?.location.street.number ?? 0), \(user!.location.postcode) \(user?.location.city ?? "") \(user?.location.country ?? "")"
+        let address = "\(user?.location.street.name ?? "") \(user?.location.street.number ?? 0), \(user?.location.city ?? "") \(user?.location.country ?? "")"
         self.addressLbl.text = address
         self.imageView.loadImageUsingCache(withUrl: user?.picture.large ?? "")
     }
