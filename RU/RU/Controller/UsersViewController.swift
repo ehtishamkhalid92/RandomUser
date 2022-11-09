@@ -32,8 +32,10 @@ class UsersViewController: UIViewController {
                 switch response {
                 case .success(let data):
                     if data.results.count == 0 && data.results.count < 20 {
+                        print("Data from Api")
                         self.getDataFromApi(url: self.sourceUrl)
                     }else{
+                        print("Data from Coredata.")
                         for items in data.results {
                             self.usersData.append(items)
                         }
